@@ -1,8 +1,8 @@
-\echo 'Delete and recreate vaccine_hubdb?'
+\echo 'Delete and recreate vaccine_hub db?'
 \prompt 'Return for yes or control-c to cancel >' answer
 
-drop database vaccine-hub-api;
-create database vaccine-hub-api;
-\connect vaccine-hub-api
+DROP DATABASE vaccine_hub;
+CREATE DATABASE vaccine_hub;
+\connect vaccine_hub
 
 \i vaccine-hub-schema.sql

@@ -2,6 +2,7 @@ const express = require("express")
 const cors = require("cors")
 const morgan = require("morgan")
 const { PORT } = require('./config')
+const authRoutes = require('./routes/auth')
 
 const { NotFoundError, BadRequestError }  = require("./utils/errors")
 
@@ -15,6 +16,8 @@ app.use(express.json())
 
 // log request info data
 app.use(morgan("tiny"))
+
+app.use("/auth", authRoutes)
 
 app.use((req, res, next) => {
   return next(new NotFoundError())

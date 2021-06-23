@@ -4,7 +4,8 @@ const router = express.Router()
 
 router.use("/login", async (req, res, next) => {
   try {
-    res.json()
+    const user = await User.login(req.body)
+    res.json({user})
   } catch(err) {
     console.log(err)
     next(err)
@@ -13,7 +14,8 @@ router.use("/login", async (req, res, next) => {
 
 router.use("/register", async (req, res, next) => {
   try {
-    res.json()
+    const user = await User.register(req.body)
+    res.status(201).json({user})
   } catch(err) {
     console.log(err)
     next(err)
